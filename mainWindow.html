@@ -11,17 +11,17 @@
                <div id="firstSlide" class="step">
                    <div class="slide">
                        <p id="click">Test</p>
-                       <p class="notes">
-                         Notes for Slide 1
-                       </p>
+                       <div class="notes">
+                           <p>Notes for Slide 1</p>
+                       </div>
                    </div> 
                </div>
                <div id="SecondSlide" class="step" data-x="1000">
                    <div class="slide">
                        <p>Test2</p>
                        <div class="notes">
-                        <p>Notes for Slide 2
-                    </p></div>
+                           <p><strong>Notes</strong> for Slide 2</p>
+                       </div>
                    </div> 
                </div>
 
@@ -29,18 +29,17 @@
     
     
     
-           <script language='javascript' src='js/impress.js/js/impress.js'></script>
-           <script language='javascript'>
-            //start up impress    
-            impress().init();
-           </script>
+           <script language='javascript' src='js/impress.js'></script>
            <script language='javascript' src='js/remote.js'></script>
            <script language='javascript'>
-               var popup = openWindow('notes.html');
-               window.addEventListener("impress:stepenter", function(step){
-                   console.log(step.srcElement.getElementsByClassName('notes'));
-                   message(popup,step.srcElement.getElementsByClassName('notes'), document.URL );
-               });
+                //open the notes window
+                var popup = openWindow('notes.html');
+                //start up impress    
+                impress().init();
+                //for each subsequent slide
+                    //TODO: Clean this
+                window.addEventListener("impress:stepenter", function(e){sendstep(popup,e);} );
+
            </script>
     </body>
 </html>
