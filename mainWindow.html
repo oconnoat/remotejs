@@ -36,11 +36,11 @@
            </script>
            <script language='javascript' src='js/remote.js'></script>
            <script language='javascript'>
-               window.addEventListener("impress:stepenter", function(e){
-                   message(popup, 'message' , document.URL);
-                   console.log(e.srcElement.getElementsByClassName('notes').innerText);
-               });
                var popup = openWindow('notes.html');
+               window.addEventListener("impress:stepenter", function(step){
+                   console.log(step.srcElement.getElementsByClassName('notes'));
+                   message(popup,step.srcElement.getElementsByClassName('notes'), document.URL );
+               });
            </script>
     </body>
 </html>
